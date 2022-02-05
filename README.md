@@ -12,7 +12,7 @@ Split into two packages:
 
 In the project directory, you can run:
 
-### React App
+### Dapp
 
 #### `yarn dapp:start`
 
@@ -35,29 +35,55 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-### Subgraph
 
-#### `yarn subgraph:auth`
+### Subgraph - Networks 
 
-```sh
-GRAPH_ACCESS_TOKEN=your-access-token-here yarn subgraph:auth
-```
+run steps for EVERY network
 
-#### `yarn subgraph:prepare-<network>`
+#### STEP 1 `yarn subgraph:prepare-<network name>`
 
-Generates subgraph.yaml for particular network.
-Supported networks are kovan, sokol, xdai and mainnet.
+Generates subgraph.yaml for particular network. For example, `yarn subgraph:prepare-hpb`
 
-#### `yarn subgraph:codegen`
+#### STEP 2 `yarn subgraph:codegen`
 
 Generates AssemblyScript types for smart contract ABIs and the subgraph schema.
 
-#### `yarn subgraph:build`
+#### STEP 3 `yarn subgraph:build`
 
 Compiles the subgraph to WebAssembly.
 
-#### `yarn subgraph:deploy-<network>`
+#### STEP 4 `yarn subgraph:deploy-<network name>`
 
-Deploys the subgraph for particular network to the official Graph Node.<br/>
+Deploys the subgraph for particular network to the official Graph Node. For example, `yarn subgraph:deploy-hpb`
 
--
+
+
+### Subgraph - Bridges 
+
+run steps for EVERY bridge pair
+
+#### STEP 1a `yarn subgraph:prepare-<network name 1 - network name 2>`
+
+Generates subgraph.yaml for particular bridge pair. For example, `yarn subgraph:prepare-hpb-bsc`
+
+#### STEP 1b `yarn subgraph:prepare-<network name 2 - network name 1>`
+
+Generates subgraph.yaml for particular bridge pair. For example, `yarn subgraph:prepare-bsc-hpb`
+
+#### STEP 2 `yarn subgraph:codegen`
+
+Generates AssemblyScript types for smart contract ABIs and the subgraph schema.
+
+#### STEP 3 `yarn subgraph:build`
+
+Compiles the subgraph to WebAssembly.
+
+#### STEP 4a `yarn subgraph:deploy-<network name 1 - network name 2>`
+
+Deploys the subgraph for particular network to the official Graph Node. for example, `yarn subgraph:deploy-hpb-bsc`
+
+#### STEP 4b `yarn subgraph:deploy-<network name 2 - network name 1>`
+
+Deploys the subgraph for particular network to the official Graph Node. for example, `yarn subgraph:deploy-bsc-hpb`
+
+
