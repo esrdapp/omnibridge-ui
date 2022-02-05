@@ -1,70 +1,104 @@
-{
-  "name": "@omnibridge/ui",
+
+  "name": "@omnibridge/subgraph",
   "version": "1.0.0",
-  "keywords": [
-    "ethereum",
-    "react",
-    "workspaces",
-    "yarn"
-  ],
-  "private": true,
-  "scripts": {
-    "subgraph:auth": "yarn workspace @omnibridge/subgraph auth",
-    "subgraph:codegen": "yarn workspace @omnibridge/subgraph codegen",
-    "subgraph:build": "yarn workspace @omnibridge/subgraph build",
-    "subgraph:prepare-kovan": "yarn workspace @omnibridge/subgraph prepare-kovan",
-    "subgraph:deploy-kovan": "yarn workspace @omnibridge/subgraph deploy-kovan",
-    "subgraph:prepare-sokol": "yarn workspace @omnibridge/subgraph prepare-sokol",
-    "subgraph:deploy-sokol": "yarn workspace @omnibridge/subgraph deploy-sokol",
-    "subgraph:prepare-xdai": "yarn workspace @omnibridge/subgraph prepare-xdai",
-    "subgraph:deploy-xdai": "yarn workspace @omnibridge/subgraph deploy-xdai",
-    "subgraph:prepare-mainnet": "yarn workspace @omnibridge/subgraph prepare-mainnet",
-    "subgraph:deploy-mainnet": "yarn workspace @omnibridge/subgraph deploy-mainnet",
-    "subgraph:prepare-xdai-bsc": "yarn workspace @omnibridge/subgraph prepare-xdai-bsc",
-    "subgraph:deploy-xdai-bsc": "yarn workspace @omnibridge/subgraph deploy-xdai-bsc",
-    "subgraph:prepare-bsc-xdai": "yarn workspace @omnibridge/subgraph prepare-bsc-xdai",
-    "subgraph:deploy-bsc-xdai": "yarn workspace @omnibridge/subgraph deploy-bsc-xdai",
-    "subgraph:prepare-mainnet-bsc": "yarn workspace @omnibridge/subgraph prepare-mainnet-bsc",
-    "subgraph:deploy-mainnet-bsc": "yarn workspace @omnibridge/subgraph deploy-mainnet-bsc",
-    "subgraph:prepare-bsc-mainnet": "yarn workspace @omnibridge/subgraph prepare-bsc-mainnet",
-    "subgraph:deploy-bsc-mainnet": "yarn workspace @omnibridge/subgraph deploy-bsc-mainnet",
-    "dapp:build": "yarn workspace @omnibridge/dapp build",
-    "dapp:eject": "yarn workspace @omnibridge/dapp eject",
-    "dapp:start": "yarn workspace @omnibridge/dapp start",
-    "dapp:test": "yarn workspace @omnibridge/dapp test",
-    "dapp:lint": "yarn workspace @omnibridge/dapp lint",
-    "lint": "eslint --ignore-path .gitignore \"./packages/**/*.{ts,tsx,js,jsx}\"",
-    "format": "prettier --ignore-path .gitignore --write \"{*,**/*}.{ts,tsx,js,jsx,json,md}\"",
-    "prepare": "husky install"
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.21.1",
+    "@graphprotocol/graph-ts": "^0.20.1"
   },
-  "workspaces": {
-    "nohoist": [
-      "**/@graphprotocol/graph-ts",
-      "**/@graphprotocol/graph-ts/**"
-    ],
-    "packages": [
-      "packages/*"
-    ]
+  "license": "MIT",
+  "scripts": {
+    "auth": "graph auth https://api.thegraph.com/deploy/ $GRAPH_ACCESS_TOKEN",
+    
+    "prepare-hpb": "mustache config/hpb.json subgraph.template.yaml > subgraph.yaml",
+    
+    "prepare-ethereum": "mustache config/ethereum.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-bsc": "mustache config/bsc.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-polygon": "mustache config/polygon.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-gnosis": "mustache config/gnosis.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-avalanche": "mustache config/avalanche.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-fantom": "mustache config/fantom.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-huobi": "mustache config/huobi.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-harmony": "mustache config/harmony.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-okx": "mustache config/okx.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-arbitrum": "mustache config/arbitrum.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-celo": "mustache config/celo.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-iotex": "mustache config/iotex.json subgraph.template.yaml > subgraph.yaml",
+    
+    "prepare-hpb-ethereum": "mustache config/hpb-ethereum.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-ethereum-hpb": "mustache config/ethereum-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-bsc": "mustache config/hpb-bsc.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-bsc-hpb": "mustache config/bsc-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-polygon": "mustache config/hpb-polygon.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-polygon-hpb": "mustache config/polygon-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-gnosis": "mustache config/hpb-gnosis.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-gnosis-hpb": "mustache config/gnosis-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-avalanche": "mustache config/hpb-avalanche.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-avalanche-hpb": "mustache config/avalanche-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-fantom": "mustache config/hpb-fantom.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-fantom-hpb": "mustache config/fantom-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-huobi": "mustache config/hpb-huobi.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-huobi-hpb": "mustache config/huobi-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-harmony": "mustache config/hpb-harmony.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-harmony-hpb": "mustache config/harmony-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-okx": "mustache config/hpb-okx.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-okx-hpb": "mustache config/okx-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-arbitrum": "mustache config/hpb-arbitrum.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-arbitrum-hpb": "mustache config/arbitrum-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-celo": "mustache config/hpb-celo.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-celo-hpb": "mustache config/celo-hpb.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-hpb-iotex": "mustache config/hpb-iotex.json subgraph.template.yaml > subgraph.yaml",
+    "prepare-iotex-hpb": "mustache config/iotex-hpb.json subgraph.template.yaml > subgraph.yaml",
+    
+
+    "codegen": "graph codegen --output-dir src/types/",
+    "build": "graph build",
+    "build-ipfs": "graph build --ipfs http://localhost:5001 subgraph.yaml",
+    
+    
+    "deploy-hpb": "graph deploy hpbridge/hpb --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    
+    "deploy-ethereum": "graph deploy hpbridge/ethereum --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-bsc": "graph deploy hpbridge/bsc --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-polygon": "graph deploy hpbridge/polygon --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-gnosis": "graph deploy hpbridge/gnosis --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-avalanche": "graph deploy hpbridge/avalanche --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-fantom": "graph deploy hpbridge/fantom --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-huobi": "graph deploy hpbridge/huobi --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-harmony": "graph deploy hpbridge/harmony --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-okx": "graph deploy hpbridge/okx --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-arbitrum": "graph deploy hpbridge/arbitrum --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-celo": "graph deploy hpbridge/celo --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-iotex": "graph deploy hpbridge/iotex --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    
+
+    "deploy-hpb-ethereum": "graph deploy hpbridge/hpb-to-ethereum-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-ethereum-hpb": "graph deploy hpbridge/ethereum-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-bsc": "graph deploy hpbridge/hpb-to-bsc-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-bsc-hpb": "graph deploy hpbridge/bsc-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-polygon": "graph deploy hpbridge/hpb-to-polygon-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-polygon-hpb": "graph deploy hpbridge/polygon-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-gnosis": "graph deploy hpbridge/hpb-to-gnosis-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-gnosis-hpb": "graph deploy hpbridge/gnosis-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-avalanche": "graph deploy hpbridge/hpb-to-avalanche-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-avalanche-hpb": "graph deploy hpbridge/avalanche-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-fantom": "graph deploy hpbridge/hpb-to-fantom-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-fantom-hpb": "graph deploy hpbridge/fantom-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-huobi": "graph deploy hpbridge/hpb-to-huobi-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-huobi-hpb": "graph deploy hpbridge/huobi-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-harmony": "graph deploy hpbridge/hpb-to-harmony-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-harmony-hpb": "graph deploy hpbridge/harmony-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-okx": "graph deploy hpbridge/hpb-to-okx-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-okx-hpb": "graph deploy hpbridge/okx-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-arbitrum": "graph deploy hpbridge/hpb-to-arbitrum-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-arbitrum-hpb": "graph deploy hpbridge/arbitrum-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-celo": "graph deploy hpbridge/hpb-to-celo-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-celo-hpb": "graph deploy hpbridge/celo-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-hpb-iotex": "graph deploy hpbridge/hpb-to-iotex-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
+    "deploy-iotex-hpb": "graph deploy hpbridge/iotex-to-hpb-bridge --ipfs http://localhost:5001 --node http://127.0.0.1:8020/" 
+
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "husky": "^7.0.1",
-    "lint-staged": "^11.1.2",
+    "mustache": "^4.2.0",
     "prettier": "^2.3.2"
-  },
-  "license": "UNLICENSED",
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": "prettier --write"
   }
 }
