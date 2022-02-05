@@ -1,6 +1,12 @@
 # Omnibridge
 
-The OmniBridge [multi-token extension](https://docs.tokenbridge.net/eth-xdai-amb-bridge/multi-token-extension) for the Arbitrary Message Bridge is the simplest way to transfer ANY ERC20/ERC677/ERC827 token to and from the xDai chain.
+The OmniBridge [multi-token extension](https://docs.tokenbridge.net/eth-xdai-amb-bridge/multi-token-extension) for the Arbitrary Message Bridge is the simplest way to transfer ANY ERC20/ERC677/ERC827 token to and from the HPB chain.
+
+Split into two packages:
+
+# Dapp (front-end) #
+# Subgraph (sent to local Graph-node) # 
+
 
 ## Available Scripts
 
